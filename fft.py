@@ -10,13 +10,13 @@ import numpy as np
 import matplotlib.pyplot as plt 
 
 def makeplot(func):
-    n = 64 # Number of data points 
+    n = 128 # Number of data points 
     dt = 5.0 # Sampling period (in meters) 
     x = dt*np.arange(0,n) # x coordinate 
     w1 = 100.0 # wavelength (meters) 
     w2 = 20.0 # wavelength (meters) 
     fx = np.sin(2*np.pi*x/w1) + 2*np.cos(2*np.pi*x/w2) # signal
-    fx = np.cos(x)
+    fx = np.cos(2*x)
     
     
     z, ax = plt.subplots(3,1)
