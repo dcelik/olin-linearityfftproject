@@ -10,7 +10,7 @@ import pylab as pyl
 import scipy as spy
 import time
 
-Fs = 128.0#sampling rate of function, frequency CANNOT EXCEED THIS VALUE: will lead to memory leakage
+Fs = 4096.0#sampling rate of function, frequency CANNOT EXCEED THIS VALUE: will lead to memory leakage
 
 def parsestring(func):
     if len(func)>=6:#make sure minimum length is reached
@@ -57,7 +57,7 @@ def parsefunc(func):
  
  
 def evaluatefunc(func):
-    t = spy.arange(0,Fs/128,(Fs/128)/Fs)#creating x range
+    t = spy.arange(0,1,1/Fs)#creating x range
     fl = []#initialize list of trig function values
     for i in func:#loop through each distinct trig function in func
         if i[1]=='sin':#check if sin is present
@@ -205,7 +205,7 @@ def makeplot(func):
             return np.concatenate([X_even + factor[:N / 2] * X_odd,
                                    X_even + factor[N / 2:] * X_odd])#concatenate the odd and even to get the full fourier transform
         
-    t = spy.arange(0,Fs/128,(Fs/128)/Fs)#create x values (frequency), 128 samples to space 1 second of signal makes graphs look nice
+    t = spy.arange(0,1,1/Fs)#create x values (frequency), 128 samples to space 1 second of signal makes graphs look nice
     
     pyl.subplots_adjust(hspace=.5)
     pyl.subplot(4,1,1)#original plot
