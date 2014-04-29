@@ -72,7 +72,7 @@ class gui(tk.Tk):
         self.funcinp = tk.Entry(self.parent)
         self.funcinp.grid(column = 0, row=1, sticky = "NEWS")
         
-        self.enterbut = tk.Button(self.parent,font=("Comic Sans",20),text = "Enter", command = lambda: fft.parsestring(self.funcinp.get())
+        self.enterbut = tk.Button(self.parent,font=("Comic Sans",20),text = "Enter", command = lambda: fft.parsestring(self.funcinp.get()))
         self.enterbut.grid(column = 1, row=1, sticky = "NEWS")        
         
         #update and geometry
