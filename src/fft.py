@@ -29,7 +29,7 @@ def parsestring(func):
 def parsefunc(func):
     amp = str(1)#set up parameter defaults
     trig = ""
-    freq = str(1)
+    freq = 1
     pi = False
     funcl = func[:len(func)-1].split("(")#split function into trig function and inside
     if funcl[0].find("*")!=-1:#check if multiplication is done before trig ie. amp>1
@@ -194,8 +194,9 @@ def makeplot(func):
         x = np.asarray(x, dtype=float)#turn list into numpy array
         N = x.shape[0]#set length of array to N
 
-        if N % 2 > 0:#check to make sure we can use algorithm
-            raise ValueError("size of x must be a power of 2")# raise error and break to ask for new sample rate
+        if N%2> 0:#check to make sure we can use algorithm
+            print "size of x must be a power of 2"# print error and break to ask for new sample rate
+            return None
         elif N <= 32:#cutoff where slow is faster than using symmetry
             return fftslow(x)#use slow to save time
         else:#recurse!
